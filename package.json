@@ -1,0 +1,11 @@
+{
+  "name": "node-gebros-sample",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.0",
+    "jsonwebtoken": "^7.2.1",
+    "morgan": "^1.7.0",
+    "realm": "^0.15.4"
+  }
+}
