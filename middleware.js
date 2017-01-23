@@ -1,6 +1,10 @@
 var middleware = {
     requireAuthentication: function (req, res, next) {
-        console.log('private route hit!');
+        //console.log('private route hit!');
+        //res.send('look at me');
+
+        
+        next();
     },
     logger: function (req, res, next) {
         console.log('Request: ' + new Date().toString() + ' ' + req.method + ' ' + req.originalUrl);
