@@ -1,5 +1,5 @@
 var assert = require('assert');
-var https = require('../https');
+var https = require('../../https');
 
 var apiUrls = {
 	sandbox: 'https://sandbox.itunes.apple.com/verifyReceipt',

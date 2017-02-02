@@ -1,6 +1,6 @@
 var jwt = require('jwt-simple');
 var apiUrls = require('./urls');
-var https = require('../https');
+var https = require('../../https');
 
 
 var oneHour = 60 * 60;

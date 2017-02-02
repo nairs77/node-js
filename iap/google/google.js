@@ -1,13 +1,13 @@
 var assert = require('assert');
 var jwt = require('./jwt');
 var apiUrls = require('./urls');
-var https = require('../https');
-
-
+var https = require('../..//https');
+//var manager = JSON.parse(fs.readFileSync('../../service_account.json', 'utf8'));
+var config = require('../../service_account.json');
 
 exports.verifyPayment = function (payment, cb) {
 	var keyObject;
-
+/*
 	try {
 		assert.equal(typeof payment.packageName, 'string', 'Package name must be a string');
 		assert.equal(typeof payment.productId, 'string', 'Product ID must be a string');
@@ -18,27 +18,32 @@ exports.verifyPayment = function (payment, cb) {
 		} else {
 			keyObject = payment.keyObject;
 		}
-
-		/* jshint camelcase:false */
 		assert(keyObject, 'Google API key object must be provided');
 		assert.equal(typeof keyObject, 'object', 'Google API key object must be an object');
 		assert.equal(typeof keyObject.client_email, 'string', 'Google API client_email must be a string');
 		assert.equal(typeof keyObject.private_key, 'string', 'Google API private_key must be a string');
-		/* jshint camelcase:true */
+		
 	} catch (error) {
 		return process.nextTick(function () {
 			cb(error);
 		});
 	}
-
+*/
 	/* jshint camelcase:false */
-	jwt.getToken(keyObject.client_email, keyObject.private_key, apiUrls.publisherScope, function (error, token) {
+	jwt.getToken(config.client_email, config.private_key, apiUrls.publisherScope, function (error, token) {		
 	/* jshint camelcase:true */
 		if (error) {
 			return cb(error);
 		}
 
-		var requestUrl;
+		console.log(token);
+/*		
+		var requestUrl = apiUrls.purchasesProductsGet(
+				payment.packageName,
+				payment.productId,
+				payment.receipt,
+				token
+			);
 
 		if (payment.subscription) {
 			requestUrl = apiUrls.purchasesSubscriptionsGet(
@@ -78,5 +83,6 @@ exports.verifyPayment = function (payment, cb) {
 				productId: payment.productId,
 			});
 		});
+*/		
 	});
 };

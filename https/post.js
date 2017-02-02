@@ -9,7 +9,8 @@ module.exports = function (url, options, cb) {
 	var data = null;
 	try {
 		if (options.form) {
-			data = formUrlencoded.encode(options.form);
+			//data = formUrlencoded.encode(options.form);
+			data = formUrlencoded(options.form);
 			options.headers = {
 				'content-type': 'application/x-www-form-urlencoded',
 				'content-length': Buffer.byteLength(data)

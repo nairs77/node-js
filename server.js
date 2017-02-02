@@ -20,7 +20,7 @@ app.use('/api',express.Router());
 
 var routes = require('./api/index');
 var users = require('./api/users');
-// var pay = require('./api/pay');
+var pay = require('./api/pay');
 
 // use morgan to log requests to the console
 app.use(morgan('dev'));
@@ -32,7 +32,7 @@ app.use(morgan('dev'));
 app.use('/', routes);
 app.use('/api', routes);
 app.use('/api/users', users);
-// app.use('/pay', pay);
+ app.use('/api/pay', pay);
 
 
 // =======================
