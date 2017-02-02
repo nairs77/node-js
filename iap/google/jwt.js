@@ -1,3 +1,5 @@
+// https://developers.google.com/identity/protocols/OAuth2ServiceAccount
+
 var jwt = require('jwt-simple');
 var apiUrls = require('./urls');
 var https = require('../../https');
