@@ -19,7 +19,7 @@ apiRoutes.post('/verify-receipt', function (req, res) {
 
     console.log(typeof iap);
     iap.verifyPayment(payment, function (error, result) {
-        console.log(error);
+        console.log(result);
     });
 
     res.send('Hello! The API is at http://localhost:' + 3000 + '/verify-receipt');

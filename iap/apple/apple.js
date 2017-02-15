@@ -107,7 +107,7 @@ exports.verifyPayment = function (payment, cb) {
 			return cb(new Error('Wrong bundle ID: ' + payment.packageName + ' (expected: ' + receipt.bid + ')'));
 		}
 
-        	result.environment = environment;
+        result.environment = environment;
 
 		return cb(null, result);
 	}

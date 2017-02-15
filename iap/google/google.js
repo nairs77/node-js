@@ -1,7 +1,7 @@
 var assert = require('assert');
 var jwt = require('./jwt');
 var apiUrls = require('./urls');
-var https = require('../..//https');
+var https = require('../../https');
 //var manager = JSON.parse(fs.readFileSync('../../service_account.json', 'utf8'));
 var config = require('../../service_account.json');
 
@@ -29,6 +29,8 @@ exports.verifyPayment = function (payment, cb) {
 		});
 	}
 */
+	console.log(config.private_key);
+	console.log(config.client_email);
 	/* jshint camelcase:false */
 	jwt.getToken(config.client_email, config.private_key, apiUrls.publisherScope, function (error, token) {		
 	/* jshint camelcase:true */
@@ -37,14 +39,10 @@ exports.verifyPayment = function (payment, cb) {
 		}
 
 		console.log(token);
-/*		
-		var requestUrl = apiUrls.purchasesProductsGet(
-				payment.packageName,
-				payment.productId,
-				payment.receipt,
-				token
-			);
-
+		var receipt = "oplpodpelojnpgbjkepeajng.AO-J1Oz-RA50KcSXE0RtkpyjkZgsApDto3TNNJoWsp4DF_8y-LCzgY5SaZs6nzU4xGel8YJQJTP06yde8dE_3WB_yPehrxqJapnLNaP_KXx9lrf1enjPN1c0ANUKpUJ6UAKMHTZEgvVE";
+		var product = "sample_coin_10";
+		var pg = "com.gebros.platform.sample";
+		
 		if (payment.subscription) {
 			requestUrl = apiUrls.purchasesSubscriptionsGet(
 				payment.packageName,
@@ -54,14 +52,20 @@ exports.verifyPayment = function (payment, cb) {
 			);
 		} else {
 			requestUrl = apiUrls.purchasesProductsGet(
-				payment.packageName,
-				payment.productId,
-				payment.receipt,
+				pg,
+				product,
+				receipt,
+				//payment.packageName,
+				//payment.productId,
+				//payment.receipt,
 				token
 			);
 		}
 
 		https.get(requestUrl, null, function (error, res, responseString) {
+
+			console.log(responseString);
+
 			if (error) {
 				return cb(error);
 			}
@@ -83,6 +87,6 @@ exports.verifyPayment = function (payment, cb) {
 				productId: payment.productId,
 			});
 		});
-*/		
+	
 	});
 };
